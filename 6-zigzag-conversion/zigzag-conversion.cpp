@@ -4,25 +4,38 @@ public:
         if (numRows == 1 || numRows >= s.size())
             return s;
 
-        vector<string> rows(numRows);
+        string t = "";
+        int n = s.size();
+        int cycle = 2 * (numRows - 1);
 
-        int currRow = 0;
-        bool goingDown = false;
+        for (int row = 0; row < numRows; row++) {
 
-        for (char c : s) {
-            rows[currRow] += c;
+            int j = row;
+            bool toggle = true;
 
-            if (currRow == 0 || currRow == numRows - 1)
-                goingDown = !goingDown;
+            while (j < n) {
 
-            currRow += goingDown ? 1 : -1;
+                t += s[j];
+
+                // First and last rows
+                if (row == 0 || row == numRows - 1) {
+                    j += cycle;
+                }
+                // Middle rows
+                else {
+                    int down = cycle - 2 * row;
+                    int up = 2 * row;
+
+                    if (toggle)
+                        j += down;
+                    else
+                        j += up;
+
+                    toggle = !toggle;
+                }
+            }
         }
 
-        string ans;
-
-        for (string &row : rows)
-            ans += row;
-
-        return ans;
+        return t;
     }
 };
