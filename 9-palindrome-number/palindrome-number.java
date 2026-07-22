@@ -15,10 +15,6 @@ class Solution {
             y /= 10;
         }
 
-        if(x == rev){
-            return true;
-        }else{
-            return false;
-        }
+        return x == rev;
     }
 }
