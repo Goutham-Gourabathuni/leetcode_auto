@@ -15,4 +15,4 @@ class Solution:
         st = set(nums)
         mn = min(nums)
         mx = max(nums)
-        return [x for x in range(mn+1, mx) if x not in nums]
+        return [x for x in range(mn+1, mx) if x not in st]
