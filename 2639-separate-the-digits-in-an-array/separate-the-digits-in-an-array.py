@@ -6,9 +6,4 @@ class Solution:
         for char in sentence:
             char_list.append(char)
         new_list = [int(x) for x in char_list]
-        return new_list 
-
-        
-
-
-        
+        return new_list        
